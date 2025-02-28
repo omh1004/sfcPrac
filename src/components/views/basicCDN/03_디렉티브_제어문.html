@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>디렉티브_제어문</title>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</head>
+<body>
+    <div id="app">
+        <h2>조건문 디렉티브</h2>
+        <h3>v-show: 조건에 따라 태그를 출력할 지 결정하는 디렉티브</h3>
+        <p>
+            v-show 디렉티브의 속성값으로 boolean형을 설정한다.<br>
+            true: display block || inline-block<br>
+            false: display none<br>
+        </p>
+        <h3>입력값을 받아서 받은 급여가 500이 넘을떄만 출력하기</h3>
+        <p>
+            input태그에 v-model을 연결하고,  입력값을 받아서, 500이 넘을때만 출력하기 
+        </p>
+        받은 급여 : <input type="text" v-model.number="salary">
+        <p v-show="salary<500">힘내요!</p>
+        <p v-show="salary>500">많이 받으시네요!</p>
+
+        <h4>비밀번호 확인</h4>
+        <p>
+            인풋태그 2개에 각각 v-model 로 input값을 연결하여, v-show를 통해 비밀번호가 서로 틀리면, 비밀번호가 틀렸습니다. <br>
+        </p>
+        비밀번호 <input type="text" v-model="password"><br>
+        비밀번호확인 <input type="text" v-model="passwordck">
+        <p v-show="password!=passwordck">비밀번호가 일치하지않습니다. </p>
+
+        <h3>v-if속성이용하기</h3>
+        <p>
+            급여를 입력받고, 500이 넘으면, 많이버시네요를 v-if로 구현
+        </p>
+        급여 <input type="text" v-model.number="salary">
+        <div>
+            <p v-if="typeof salary!='number'" >숫자를 입력하세요!</p>
+            <p v-else-if="salary<=0">입력값은 0보다 커야함</p>
+            <p v-else-if="salary<600&&salary>200">급여를 받고있네요.</p>
+        </div>
+        <h3>반복문 이용하기</h3>
+        <h4>v-for: 태그를 반복해서 출력하는 디렉티브</h4>
+        <p>
+            v-for="(변수명) in 숫자", v-for=(변수명,[,index] in 배열)<br>
+            vue내부에서 반복해서 출력되는 태그를 구분할 수 있게 :key 속성을 설정 <br>
+            key값은 페이지네에서 유일한 값으로 설정
+        </p>
+        <h4>기본반복문</h4>
+        <ul>
+            <li v-for="n in 5">{{n}}</li>
+        </ul>
+        <h4>배열데이터 출력하기</h4>
+        <ul>
+            <li v-for="h in heights" :key="{{h}}">{{ h }}</li>
+        </ul>
+        <h4>객체배열출력</h4>
+        <ul>
+            <li v-for="(h,i) in heights :key=`${i}_${h}`>{{i}} {{h}}</li>
+        </ul>
+
+    </div>
+    <script>
+        const model={
+            salary:0
+            ,password:""
+            ,passwordck:""
+            ,heights:[180.5,176.3,177.2,190.3,162.3,166.8],
+            product:{
+                name:"노트북",price:200, brand:"애플",ram:16
+            },
+            products:[
+                {name:"노트북",price:200, brand:"애플",ram:16},
+                {name:"핸드폰",price:180, brand:"삼성",ram:8},
+                {name:"태블릿",price:120, brand:"애플",ram:8},
+                {name:"워치",price:60, brand:"애플",ram:4}
+            ],
+            tempProduct:{},
+        }
+        Vue.createApp({
+            name:"test2"
+            ,data(){
+                return model;
+            }
+            ,methods:{
+            }
+
+        }).mount("#app");
+    </script>
+    
+</body>
+</html>
