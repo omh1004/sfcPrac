@@ -12,7 +12,7 @@
 </template>
 <script>
 export default {
-    name:"propChildCompoent"
+    name:"propChildComponent"
     ,props:["mydata","number"]
 }
 </script>

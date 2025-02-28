@@ -11,7 +11,7 @@
       <ParentComponent/>
     </div>
 
-  
+    
 </template>
 
 <script>
