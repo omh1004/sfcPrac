@@ -15,6 +15,12 @@
       <EmitParentComponent/>
     </div>
 
+
+    <div>
+      <h3>slotcontainer</h3>
+      <SlotContainer/>
+    </div>
+
     
 </template>
 
@@ -24,18 +30,14 @@ import { RouterLink, RouterView } from 'vue-router'
 import BasicComponent from './components/views/01_생성이용/01_BasicComponent.vue';
 import ParentComponent from './components/views/03_props_emit/ParentComponent.vue';
 import EmitParentComponent from './components/views/04_emitter이용/ParentComponent.vue';
+import SlotContainer from './components/views/06_슬롯이용/SlotContainer.vue';
 
 
 export default{
   name:"App"
-  ,components:{BasicComponent, ParentComponent,EmitParentComponent}
+  ,components:{BasicComponent, ParentComponent,EmitParentComponent,SlotContainer}
 }
-
-
-
 </script>
-
-
 <style >
 
 
